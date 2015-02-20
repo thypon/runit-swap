@@ -1,6 +1,6 @@
 #!/bin/bash
 cd `dirname $0`
-sudo cp -v ./systemd-swap.sh      /usr/lib/systemd/scripts/systemd-swap.sh
-sudo cp -v ./systemd-swap.conf    /etc/
-sudo cp -v ./systemd-swap.service /etc/systemd/system/systemd-swap.service
-sudo cp -v ./90-systemd-swap.conf /etc/modprobe.d/90-systemd-swap.conf
+sudo cp -v ./runit-swap.sh      /usr/sbin/runit-swap.sh
+sudo cp -v ./runit-swap.conf    /etc/
+sudo cp -rv ./swap              /etc/sv/swap
+sudo cp -v ./90-runit-swap.conf /etc/modprobe.d/90-runit-swap.conf

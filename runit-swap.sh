@@ -94,7 +94,7 @@ parse_config(){
   # get total ram size for meminfo
   sys[ram_size]=$(awk '/MemTotal:/ { print $2 }' /proc/meminfo)
 
-  # get values from /etc/systemd-swap.conf
+  # get values from /etc/runit-swap.conf
   . $config
 
   # Parse fstab for swap mounts
@@ -113,7 +113,7 @@ parse_config(){
 }
 
 manage_config(){
-  config=/etc/systemd-swap.conf
+  config=/etc/runit-swap.conf
   if [ -f $config ]; then
       parse_config
   else
@@ -123,9 +123,9 @@ manage_config(){
 }
 
 ###############################################################################
-lock[zram]=/run/.systemd-swap.zram
-lock[dev]=/run/.systemd-swap.dev
-lock[swapf]=/run/.systemd-swap.swapf
+lock[zram]=/run/.runit-swap.zram
+lock[dev]=/run/.runit-swap.dev
+lock[swapf]=/run/.runit-swap.swapf
 case $1 in
     start)
         manage_config
